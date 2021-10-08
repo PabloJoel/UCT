@@ -10,12 +10,12 @@ from games.CheckersGame import CheckersGame
 from players.RandomPlayer import RandomPlayer
 from players.UCTPlayer import UCTPlayer
 
-def play(player1_type, player2_type, iters1=None, iters2=None, heur1=None, heur2=None, lgr1=None, lgr2=None, choose_move1=None, choose_move2=None):
+def play(games,player1_type, player2_type, iters1=None, iters2=None, heur1=None, heur2=None, lgr1=None, lgr2=None, choose_move1=None, choose_move2=None):
     black = 0
     white = 0
     draw  = 0
     i = 0
-    while(i<100):
+    while(i<games):
         player1 = create_player(player1_type, iters1, heur1, lgr1, choose_move1)
         player2 = create_player(player2_type, iters2, heur2, lgr2, choose_move2)
         
