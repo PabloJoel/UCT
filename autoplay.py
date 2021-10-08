@@ -39,15 +39,15 @@ last_good_reply2 = False
 choose_move = 'max_value'
 
 while(i<100):
-    player1 = UCTPlayer(player=True,game=CheckersGame(),iter=mcts_iter1,choose=choose_move, heurs=heur1,last_good_reply=last_good_reply1)
-    #player1 = RandomPlayer(show=False)
-    player2 = UCTPlayer(player=False,game=CheckersGame(),iter=mcts_iter2,choose=choose_move, heurs=heur2,last_good_reply=last_good_reply2)
+    #player1 = UCTPlayer(game=CheckersGame(),iter=mcts_iter1,choose=choose_move, heurs=heur1,last_good_reply=last_good_reply1)
+    player1 = RandomPlayer(show=False)
+    player2 = UCTPlayer(game=CheckersGame(),iter=mcts_iter2,choose=choose_move, heurs=heur2,last_good_reply=last_good_reply2)
     
     model = gm.GameModel(CheckersGame())
     winner = model.play(player1=player1, player2=player2, show=False)
     
-    #print(f'Winner:{winner}, Current game: {i}, MCTS iter2: {mcts_iter2}, Heur2: {heur2}, Last Good Reply2: {last_good_reply2}, Choose:{choose_move}')
-    print(f'Winner:{winner}, Current game: {i}, MCTS iter1: {mcts_iter1}, Heur1: {heur1}, Last Good Reply: {last_good_reply1}, MCTS iter2: {mcts_iter2}, Heur2: {heur2}, Last Good Reply2: {last_good_reply2}, Choose:{choose_move}')
+    print(f'Winner:{winner}, Current game: {i}, MCTS iter2: {mcts_iter2}, Heur2: {heur2}, Last Good Reply2: {last_good_reply2}, Choose:{choose_move}')
+    #print(f'Winner:{winner}, Current game: {i}, MCTS iter1: {mcts_iter1}, Heur1: {heur1}, Last Good Reply: {last_good_reply1}, MCTS iter2: {mcts_iter2}, Heur2: {heur2}, Last Good Reply2: {last_good_reply2}, Choose:{choose_move}')
     
     if winner == 'Black':
         black += 1
