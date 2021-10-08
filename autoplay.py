@@ -10,7 +10,7 @@ from games.CheckersGame import CheckersGame
 from players.RandomPlayer import RandomPlayer
 from players.UCTPlayer import UCTPlayer
 
-def play(games,player1_type, player2_type, iters1=None, iters2=None, heur1=None, heur2=None, lgr1=None, lgr2=None, choose_move1=None, choose_move2=None):
+def play(games, player1_type, player2_type, iters1=None, iters2=None, heur1=None, heur2=None, lgr1=None, lgr2=None, choose_move1=None, choose_move2=None):
     black = 0
     white = 0
     draw  = 0
