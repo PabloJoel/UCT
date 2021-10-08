@@ -10,7 +10,7 @@ from games.CheckersGame import CheckersGame
 from players.RandomPlayer import RandomPlayer
 from players.UCTPlayer import UCTPlayer
 
-def play(games, player1_type, player2_type, iters1=None, iters2=None, heur1=None, heur2=None, lgr1=None, lgr2=None, choose_move1=None, choose_move2=None):
+def play(player1_type, player2_type, games=100, iters1=None, iters2=None, heur1=None, heur2=None, lgr1=None, lgr2=None, choose_move1=None, choose_move2=None):
     black = 0
     white = 0
     draw  = 0
@@ -68,3 +68,4 @@ def return_info(player1, player2, iters1, iters2, heur1, heur2, lgr1, lgr2, choo
         prnt = prnt + f' MCTS iter2: {iters2}, Heur2: {heur2}, Last Good Reply2: {lgr2}, Choose Move2: {choose_move2}'
 
     return prnt
+
