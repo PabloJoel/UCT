@@ -68,5 +68,3 @@ def return_info(player1, player2, iters1, iters2, heur1, heur2, lgr1, lgr2, choo
         prnt = prnt + f' MCTS iter2: {iters2}, Heur2: {heur2}, Last Good Reply2: {lgr2}, Choose Move2: {choose_move2}'
 
     return prnt
-
-play(player1_type="rand",player2_type="rand")
