@@ -9,6 +9,9 @@ class GameInterface( abc.ABC ):
     def is_finished(self):
         pass
 
+    def same_game_state(self,other):
+        pass
+    
     def __eq__(self, other):
         pass
     

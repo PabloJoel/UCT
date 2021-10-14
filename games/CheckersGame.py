@@ -299,6 +299,9 @@ class CheckersGame():
             return CheckersGame(black_tiles=enemy_copy, white_tiles=team_copy, next_player=next_color, mov=mov)
 
     def is_finished(self):
+        """ Returns a tuple, the first element True (game finished) or False (unfinished)
+            and a second element 0 (draw), True (player Treu wins), False (player False wins)
+        """
         # Draw because of definition 1.32.2
         if self.cond1 > 40 and self.cond2 > 40:
             return (True,0)
@@ -325,7 +328,7 @@ class CheckersGame():
         else:
             return False
     
-    def same_board(self, other):
+    def same_game_state(self, other):
         if self.black_tiles == other.black_tiles and self.white_tiles == other.white_tiles:
             return True
         else:

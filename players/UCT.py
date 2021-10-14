@@ -27,21 +27,17 @@ class UCT():
             tree.nodes.append(BTree(game=new_game, parent=tree))
         """
         movs = tree.game.generateMoves()
+        
         #Only 1 move possible
         if len(movs)==1:
             tree.nodes.append(BTree(game=movs[0], parent=tree))
             return tree
 
-        #Check if there is a winning
+        #Check if there is a winning move
         for mov in movs:
             finish, winner = mov.is_finished()
             if finish and winner == tree.game.next_player: #Winning move
                 tree.nodes.append(BTree(game=mov, parent=tree))
-                """
-                new_nodes = list()
-                new_nodes.append(node)
-                tree.nodes = new_nodes
-                """
                 return tree
 
         iter = 0
@@ -49,7 +45,18 @@ class UCT():
             selected_node = self.selection(tree)
             sim_value = self.simulation(selected_node, heurs, last_good_reply)
             UCT.backpropagation(selected_node, sim_value)
+
             iter += 1
+
+        #Take only non losing moves
+        non_losing_moves = list()
+        for node in self.tree.nodes:
+            end = node.game.is_finished()
+            if (not end[0]) or (end[1]==0):
+                non_losing_moves.append(node)
+
+        if non_losing_moves: #Not empty list
+            self.tree.nodes = non_losing_moves
 
         return tree
 
@@ -207,6 +214,7 @@ class UCT():
 
     def backpropagation(node, value):
         node.visits += 1
+
         if value == 'Black' and node.game.next_player == False:
             node.value += 1
         elif value == 'White'  and node.game.next_player == True:
@@ -214,7 +222,6 @@ class UCT():
         elif value == 'Draw':
             node.value += 0.25
 
-        #node.value += value
         if node.parent is not None:
             UCT.backpropagation(node.parent, value)
 
